@@ -1,0 +1,57 @@
+{
+  "name": "İletişim Büyük Numara — dev kontur telefon + zil düğmesi + dikey çizgili kanal sırası",
+  "description": "Marka renginde blokta başlığın altında telefon numarası ekranı kaplayan kontur (içi boş) dev tipografiyle yazılır; üzerine gelince dolar. Altında titreyen zil ikonlu «ara» hapı, en altta öteki kanallar (adres · WhatsApp · e-posta · saat) dikey çizgiyle ayrılmış sütunlar. Telefon yoksa WhatsApp, o da yoksa ilk bağlantılı kanal öne çıkar. iletisim-telefon-odak numarayı koyu zeminde dolu manşet + kopyala ile verir; bu modül vurgu bloğunda KONTUR (text-stroke) dev numara, hover'da dolgu geçişi, titreşen zil hapı ve dikey çizgili kanal sırasıyla afiş gibi kurulur. Kanallar desing'den (adres · telefon · WhatsApp · e-posta · saat) + data satırları; etiketler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Kanal yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "dialpad",
+  "category": "contact",
+  "subCategory": "giant-number",
+  "tags": [
+    "contact",
+    "phone",
+    "display-type",
+    "poster",
+    "accent",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "adres": "",
+    "telefon": "",
+    "eposta": "",
+    "whatsapp": "",
+    "saat": "",
+    "haritaUrl": "",
+    "haritaGomme": "",
+    "waMesaj": "",
+    "bg": "var(--mx-site-primary, #2563eb)",
+    "text": "var(--mx-site-primary-contrast, #ffffff)",
+    "muted": "color-mix(in srgb, var(--mx-site-primary-contrast, #ffffff) 92%, var(--mx-site-primary, #2563eb))",
+    "kartBg": "color-mix(in srgb, var(--mx-site-primary-contrast, #ffffff) 10%, transparent)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-primary-contrast, #ffffff) 28%, transparent)",
+    "accent": "var(--mx-site-primary-contrast, #ffffff)",
+    "accentInk": "var(--mx-site-primary-contrast, #ffffff)",
+    "accentText": "var(--mx-site-primary, #2563eb)",
+    "vurguBg": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguText": "var(--mx-site-primary, #2563eb)",
+    "bgcolor": "var(--mx-site-primary, #2563eb)",
+    "color": "var(--mx-site-primary-contrast, #ffffff)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing",
+    "alanlar": {
+      "ikon": "Material Symbols adı (kanal türü ikondan da anlaşılır: mail · call · location_on · schedule)",
+      "deger": "dil sözlüğü (görünen değer, zorunlu; eski `text`)",
+      "url": "bağlantı (boşsa e-posta/telefon/haritadan türetilir)",
+      "baslik": "dil sözlüğü (kanal etiketi)"
+    }
+  }
+}

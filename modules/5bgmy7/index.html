@@ -1,0 +1,95 @@
+<section class="modulex-iletisim-buyuk-numara{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-iletisim-buyuk-numara-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* iletisim-buyuk-numara — iletisim-telefon-odak numarayı koyu zeminde dolu manşet + kopyala ile verir; bu modül vurgu bloğunda KONTUR (text-stroke) dev numara, hover'da dolgu geçişi, titreşen zil hapı ve dikey çizgili kanal sırasıyla afiş gibi kurulur. */
+  .modulex-iletisim-buyuk-numara { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-iletisim-buyuk-numara *, .modulex-iletisim-buyuk-numara *::before, .modulex-iletisim-buyuk-numara *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-iletisim-buyuk-numara :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-iletisim-buyuk-numara :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-iletisim-buyuk-numara :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-iletisim-buyuk-numara :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-iletisim-buyuk-numara img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-iletisim-buyuk-numara) img { height: auto; }
+  .modulex-iletisim-buyuk-numara [hidden] { display: none !important; }
+  .modulex-iletisim-buyuk-numara :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-iletisim-buyuk-numara :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-iletisim-buyuk-numara-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-iletisim-buyuk-numara-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-iletisim-buyuk-numara--bassiz .modulex-iletisim-buyuk-numara-bas { display: none; }
+  .modulex-iletisim-buyuk-numara-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-iletisim-buyuk-numara-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-iletisim-buyuk-numara-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-iletisim-buyuk-numara-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-iletisim-buyuk-numara-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-iletisim-buyuk-numara-dugme:hover { transform: translateY(-2px); }
+  .modulex-iletisim-buyuk-numara-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-iletisim-buyuk-numara-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-iletisim-buyuk-numara-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-iletisim-buyuk-numara-sahne { display: grid; gap: clamp(18px, 3vw, 30px); }
+  .modulex-iletisim-buyuk-numara-ust-sira { display: grid; gap: 12px; max-inline-size: 720px; }
+  .modulex-iletisim-buyuk-numara-ust-sira .modulex-iletisim-buyuk-numara-ust { color: --text--; }
+  .modulex-iletisim-buyuk-numara-odak { display: grid; gap: 6px; padding-block: clamp(12px, 2vw, 26px); border-block: 2px solid color-mix(in srgb, --text-- 35%, transparent); }
+  .modulex-iletisim-buyuk-numara-oetk { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+  .modulex-iletisim-buyuk-numara-dev { display: block; color: transparent; -webkit-text-stroke: 2px --text--; font-family: var(--mx-font-heading, inherit); font-size: clamp(2.5rem, 9.5vw, 8rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.02; text-decoration: none; overflow-wrap: anywhere; transition: color 0.45s ease, letter-spacing 0.45s ease; }
+  a.modulex-iletisim-buyuk-numara-dev:hover, a.modulex-iletisim-buyuk-numara-dev:focus-visible { color: --text--; letter-spacing: -0.015em; }
+  .modulex-iletisim-buyuk-numara-ara { justify-self: start; display: inline-flex; align-items: center; gap: 12px; min-height: 58px; padding-block: 8px; padding-inline: 8px 26px; border-radius: 999px; background: --text--; color: --bg--; font-size: 1.1rem; font-weight: 800; text-decoration: none; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-iletisim-buyuk-numara-ara:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -14px color-mix(in srgb, --text-- 60%, transparent); }
+  .modulex-iletisim-buyuk-numara-zil { display: inline-grid; place-items: center; inline-size: 42px; block-size: 42px; border-radius: 50%; background: --bg--; color: --text--; animation: modulex-iletisim-buyuk-numara-titre 2.6s ease-in-out infinite; }
+  .modulex-iletisim-buyuk-numara-zil .material-symbols-outlined { font-size: 22px; }
+  @keyframes modulex-iletisim-buyuk-numara-titre { 0%, 70%, 100% { transform: rotate(0); } 75% { transform: rotate(-14deg); } 80% { transform: rotate(12deg); } 85% { transform: rotate(-8deg); } 90% { transform: rotate(6deg); } }
+  .modulex-iletisim-buyuk-numara-alt-sira { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 18px 0; margin-block-start: 6px; }
+  .modulex-iletisim-buyuk-numara-dk { display: grid; align-content: start; gap: 4px; min-width: 0; padding-block: 6px; padding-inline: 18px; border-inline-start: 2px solid color-mix(in srgb, --text-- 35%, transparent); transition: border-color 0.25s ease; }
+  .modulex-iletisim-buyuk-numara-dk:hover { border-inline-start-color: --text--; }
+  .modulex-iletisim-buyuk-numara-dketk { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-iletisim-buyuk-numara-dk .modulex-iletisim-buyuk-numara-deger { font-size: 1.05rem; }
+  .modulex-iletisim-buyuk-numara-dk a.modulex-iletisim-buyuk-numara-deger:hover { color: --text--; }
+  @media (max-width: 768px) {
+    .modulex-iletisim-buyuk-numara-dev { -webkit-text-stroke-width: 1.5px; }
+    .modulex-iletisim-buyuk-numara-ara { justify-self: stretch; justify-content: center; }
+    .modulex-iletisim-buyuk-numara-dk { padding-inline: 14px 0; }
+  }
+  .modulex-iletisim-buyuk-numara-kikon { flex: none; display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: color-mix(in srgb, --accent-- 14%, transparent); color: --accentInk--; font-size: 24px; }
+  .modulex-iletisim-buyuk-numara-ketiket { display: block; color: --muted--; font-size: 0.82rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-iletisim-buyuk-numara-deger { color: inherit; font-weight: 650; text-decoration: none; overflow-wrap: anywhere; transition: color 0.2s ease; }
+  a.modulex-iletisim-buyuk-numara-deger:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-iletisim-buyuk-numara-eylem { display: inline-flex; align-items: center; gap: 6px; color: --accentInk--; font-weight: 700; text-decoration: none; transition: gap 0.2s ease; }
+  .modulex-iletisim-buyuk-numara-eylem:hover { gap: 10px; }
+  .modulex-iletisim-buyuk-numara-eylem .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-buyuk-numara-kopya { display: none; align-items: center; gap: 6px; min-height: 36px; padding: 6px 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: --text--; font: inherit; font-size: 0.85rem; font-weight: 650; transition: border-color 0.2s ease, background 0.2s ease; }
+  .modulex-iletisim-buyuk-numara--kjs .modulex-iletisim-buyuk-numara-kopya { display: inline-flex; }
+  .modulex-iletisim-buyuk-numara-kopya:hover { border-color: --accent--; }
+  .modulex-iletisim-buyuk-numara-kopya .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-buyuk-numara--kopyalandi { background: color-mix(in srgb, --accent-- 14%, transparent); }
+  .modulex-iletisim-buyuk-numara-sosyal { display: grid; gap: 10px; }
+  .modulex-iletisim-buyuk-numara-sbaslik { color: --muted--; font-size: 0.9rem; font-weight: 650; }
+  .modulex-iletisim-buyuk-numara-sliste { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-iletisim-buyuk-numara-cip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 8px 14px; border: 1px solid --cizgi--; border-radius: 999px; color: inherit; font-weight: 650; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .modulex-iletisim-buyuk-numara-cip:hover { border-color: --accent--; transform: translateY(-2px); }
+  .modulex-iletisim-buyuk-numara-cikon { font-size: 18px; }
+  .modulex-iletisim-buyuk-numara-harita { position: relative; overflow: hidden; min-height: 280px; border-radius: --yuvarlak--; background: --kartBg--; }
+  .modulex-iletisim-buyuk-numara-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .modulex-iletisim-buyuk-numara-hdesen { position: absolute; inset: 0; display: grid; place-items: center; background-color: color-mix(in srgb, --accent-- 8%, --kartBg--); background-image: linear-gradient(color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), radial-gradient(circle at 30% 40%, color-mix(in srgb, --accent-- 18%, transparent) 0 18%, transparent 19%); background-size: 36px 36px, 36px 36px, 100% 100%; }
+  .modulex-iletisim-buyuk-numara-pin { color: --accentInk--; font-size: 56px; animation: modulex-iletisim-buyuk-numara-zipla 2.4s ease-in-out infinite; }
+  @keyframes modulex-iletisim-buyuk-numara-zipla { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .modulex-iletisim-buyuk-numara-hyol { position: absolute; inset-block-end: 16px; inset-inline-start: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: --bg--; color: --text--; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px color-mix(in srgb, --text-- 16%, transparent); transition: transform 0.2s ease; }
+  .modulex-iletisim-buyuk-numara-hyol:hover { transform: translateY(-2px); }
+  .modulex-iletisim-buyuk-numara-hyol .material-symbols-outlined { font-size: 18px; color: --accentInk--; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-buyuk-numara :is(.modulex-iletisim-buyuk-numara-baslik, .modulex-iletisim-buyuk-numara-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-buyuk-numara-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-iletisim-buyuk-numara { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-iletisim-buyuk-numara *, .modulex-iletisim-buyuk-numara *::before, .modulex-iletisim-buyuk-numara *::after { animation: none !important; transition: none !important; }
+  }
+</style>

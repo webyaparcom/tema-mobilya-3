@@ -1,0 +1,112 @@
+<section class="modulex-sss-karar-agaci{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-sss-karar-agaci-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* sss-karar-agaci — sss-kart-izgara cevapları kartta, sss-ana-detay yan panelde gösterir; bu modül iki adımlı karar akışı — önce sorun seçimi (ızgara kaybolur), sonra cevap satırlarından üretilen numaralı adım zinciri ve çözülmediyse destek çağrısı. */
+  .modulex-sss-karar-agaci { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-sss-karar-agaci *, .modulex-sss-karar-agaci *::before, .modulex-sss-karar-agaci *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-sss-karar-agaci :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-sss-karar-agaci :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-sss-karar-agaci :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-sss-karar-agaci :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-sss-karar-agaci img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-sss-karar-agaci) img { height: auto; }
+  .modulex-sss-karar-agaci [hidden] { display: none !important; }
+  .modulex-sss-karar-agaci :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-sss-karar-agaci :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-sss-karar-agaci-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-sss-karar-agaci-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-sss-karar-agaci--bassiz .modulex-sss-karar-agaci-bas { display: none; }
+  .modulex-sss-karar-agaci-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-sss-karar-agaci-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-sss-karar-agaci-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-sss-karar-agaci-bas { max-width: 760px; }
+  .modulex-sss-karar-agaci-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-sss-karar-agaci-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-sss-karar-agaci-dugme:hover { transform: translateY(-2px); }
+  .modulex-sss-karar-agaci-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-sss-karar-agaci-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-sss-karar-agaci-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-sss-karar-agaci-sec-bas { display: flex; align-items: center; gap: 8px; margin-block-end: 16px; color: --accentInk--; font-weight: 750; }
+  .modulex-sss-karar-agaci-sec-ikon { font-size: 22px; }
+  .modulex-sss-karar-agaci-sorunlar { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; }
+  .modulex-sss-karar-agaci-sorun { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; min-height: 92px; padding: 18px 20px; border: 2px solid --cizgi--; border-radius: --yuvarlak--; background: --bg--; color: --text--; font-weight: 700; line-height: 1.35; text-decoration: none; transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-sss-karar-agaci-sorun:hover { border-color: --accent--; transform: translateY(-3px); box-shadow: 0 18px 30px -24px color-mix(in srgb, --text-- 60%, transparent); }
+  .modulex-sss-karar-agaci-sikon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: color-mix(in srgb, --accent-- 14%, --bg--); color: --accentInk--; font-size: 26px; }
+  .modulex-sss-karar-agaci-git { color: --accentInk--; font-size: 22px; transition: color 0.25s ease; }
+  .modulex-sss-karar-agaci-cozumler { display: grid; gap: 22px; }
+  .modulex-sss-karar-agaci:not(.modulex-sss-karar-agaci--kjs) .modulex-sss-karar-agaci-cozumler { margin-block-start: 40px; }
+  .modulex-sss-karar-agaci-cozum { display: grid; gap: 22px; padding: clamp(22px, 3vw, 40px); border-block-start: 5px solid --accent--; border-radius: --yuvarlak--; background: --kartBg--; scroll-margin-block-start: 110px; }
+  .modulex-sss-karar-agaci--kjs .modulex-sss-karar-agaci-cozum:not([hidden]) { animation: modulex-sss-karar-agaci-cozgel 0.4s ease both; }
+  .modulex-sss-karar-agaci-cozum:focus { outline: none; }
+  .modulex-sss-karar-agaci-cust { display: grid; justify-items: start; gap: 14px; }
+  .modulex-sss-karar-agaci-geri { display: inline-flex; align-items: center; gap: 6px; padding-block: 6px; padding-inline: 8px 14px; border: 1px solid --cizgi--; border-radius: 999px; background: --bg--; color: --text--; font: inherit; font-size: 0.9rem; font-weight: 650; transition: border-color 0.2s ease, color 0.2s ease; }
+  .modulex-sss-karar-agaci-geri:hover { border-color: --accent--; color: --accentInk--; }
+  .modulex-sss-karar-agaci-cbas { display: flex; align-items: center; gap: 12px; font-size: clamp(1.3rem, 2.4vw, 1.75rem); font-weight: 800; line-height: 1.25; }
+  .modulex-sss-karar-agaci-cikon { color: --accentInk--; font-size: 34px; }
+  .modulex-sss-karar-agaci-adimlar { display: grid; }
+  .modulex-sss-karar-agaci-adim { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; padding-block-end: 22px; }
+  .modulex-sss-karar-agaci-adim:last-child { padding-block-end: 0; }
+  .modulex-sss-karar-agaci-adim:not(:last-child)::before { content: ""; position: absolute; inset-block: 46px 2px; inset-inline-start: 21px; width: 2px; background: --cizgi--; }
+  .modulex-sss-karar-agaci-ano { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: --vurguBg--; color: --vurguText--; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .modulex-sss-karar-agaci-adim .modulex-sss-karar-agaci-cevap { padding-block-start: 9px; color: --text--; font-size: 1.02rem; line-height: 1.65; }
+  .modulex-sss-karar-agaci--kjs .modulex-sss-karar-agaci-adim { animation: modulex-sss-karar-agaci-cozgel 0.45s ease both; animation-delay: calc(var(--j) * 90ms); }
+  .modulex-sss-karar-agaci-yardim { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding-block-start: 18px; border-block-start: 1px dashed --cizgi--; }
+  .modulex-sss-karar-agaci-yardim .modulex-sss-karar-agaci-cta { margin: 0; }
+  .modulex-sss-karar-agaci-ymetin { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  .modulex-sss-karar-agaci-yikon { color: --accentInk--; font-size: 26px; }
+  @keyframes modulex-sss-karar-agaci-cozgel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 768px) {
+    .modulex-sss-karar-agaci-sorun { min-height: 74px; padding: 14px 16px; }
+    .modulex-sss-karar-agaci-yardim { display: grid; justify-content: stretch; }
+  }
+  .modulex-sss-karar-agaci-bag { display: inline-flex; align-items: center; gap: 6px; margin-block-start: 10px; color: --accentInk--; font-weight: 700; text-decoration: none; transition: gap 0.25s ease; }
+  .modulex-sss-karar-agaci-bag:hover { gap: 10px; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-sss-karar-agaci-bag .material-symbols-outlined { font-size: 18px; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-sss-karar-agaci :is(.modulex-sss-karar-agaci-baslik, .modulex-sss-karar-agaci-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-sss-karar-agaci-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-sss-karar-agaci { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-sss-karar-agaci *, .modulex-sss-karar-agaci *::before, .modulex-sss-karar-agaci *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-sss-karar-agaci";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const kararAgaci = (s, P, az) => {
+        const bag = [...s.querySelectorAll("[data-agac]")];
+        const pan = [...s.querySelectorAll("[data-agac-panel]")];
+        const izgara = s.querySelector("[data-agac-izgara]");
+        if (!bag.length || !pan.length) return;
+        s.classList.add(P + "--kjs");
+        let son = "";
+        const git = (el) => { if (!el) return; el.focus({ preventScroll: true }); el.scrollIntoView({ behavior: az ? "auto" : "smooth", block: "nearest" }); };
+        const goster = (n, odak) => {
+          pan.forEach((x) => { x.hidden = x.dataset.agacPanel !== n; });
+          if (izgara) izgara.hidden = n !== "";
+          s.classList.toggle(P + "--cozumde", n !== "");
+          if (odak) git(n === "" ? bag.find((a) => a.dataset.agac === son) : pan.find((x) => x.dataset.agacPanel === n));
+        };
+        bag.forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); son = a.dataset.agac; goster(son, true); }));
+        s.querySelectorAll("[data-agac-geri]").forEach((b) => { b.hidden = false; b.addEventListener("click", () => goster("", true)); });
+        goster("", false);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      kararAgaci(s, P, az);
+    });
+  })();
+</script>

@@ -1,0 +1,102 @@
+<section class="modulex-deger-vaat-manset{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-deger-vaat-manset-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* deger-vaat-manset — deger-dergi eşit iki sütun + bas harftir, deger-merkez-vurgu simetrik üç sütundur; bu modül asimetrik ön sayfa (künye + manşet + numaralı yan sütun) kurar, başlık bloğu künyenin kendisidir. */
+  .modulex-deger-vaat-manset { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-deger-vaat-manset *, .modulex-deger-vaat-manset *::before, .modulex-deger-vaat-manset *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-deger-vaat-manset :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-deger-vaat-manset :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-deger-vaat-manset :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-deger-vaat-manset :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-deger-vaat-manset img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-deger-vaat-manset) img { height: auto; }
+  .modulex-deger-vaat-manset [hidden] { display: none !important; }
+  .modulex-deger-vaat-manset :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-deger-vaat-manset :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-deger-vaat-manset-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-deger-vaat-manset-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-deger-vaat-manset--bassiz .modulex-deger-vaat-manset-bas { display: none; }
+  .modulex-deger-vaat-manset-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-deger-vaat-manset-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-deger-vaat-manset-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-deger-vaat-manset-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-deger-vaat-manset-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-deger-vaat-manset-dugme:hover { transform: translateY(-2px); }
+  .modulex-deger-vaat-manset-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-deger-vaat-manset-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-deger-vaat-manset-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-deger-vaat-manset-kunye { display: grid; justify-items: center; gap: 10px; margin-block-end: clamp(26px, 4vw, 44px); padding-block: 16px 22px; border-block: 4px double --text--; text-align: center; }
+  .modulex-deger-vaat-manset-kunye .modulex-deger-vaat-manset-ust { display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; }
+  .modulex-deger-vaat-manset-kunye .modulex-deger-vaat-manset-ust::before, .modulex-deger-vaat-manset-kunye .modulex-deger-vaat-manset-ust::after { content: ""; flex: 1; max-width: 160px; height: 1px; background: --cizgi--; }
+  .modulex-deger-vaat-manset-kunye .modulex-deger-vaat-manset-baslik { font-family: var(--mx-font-serif, var(--mx-font-heading, serif)); font-size: clamp(2.2rem, 5.4vw, 4.4rem); font-weight: 700; letter-spacing: -0.01em; }
+  .modulex-deger-vaat-manset-kunye .modulex-deger-vaat-manset-metin { max-width: 640px; font-style: italic; }
+  .modulex-deger-vaat-manset-sayfa { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); }
+  .modulex-deger-vaat-manset-sayfa--tek { grid-template-columns: minmax(0, 1fr); }
+  .modulex-deger-vaat-manset-lead { position: relative; display: grid; align-content: start; gap: 18px; padding-inline-end: clamp(24px, 4vw, 52px); border-inline-end: 1px solid --cizgi--; }
+  .modulex-deger-vaat-manset-sayfa--tek .modulex-deger-vaat-manset-lead { padding-inline-end: 0; border-inline-end: 0; }
+  .modulex-deger-vaat-manset-etiket { color: --accentInk--; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-deger-vaat-manset-lbaslik { font-family: var(--mx-font-serif, var(--mx-font-heading, serif)); font-size: clamp(2rem, 4.6vw, 3.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+  .modulex-deger-vaat-manset-lbaslik::before { content: "“"; display: block; color: --accent--; font-size: 1.5em; line-height: 0.7; }
+  .modulex-deger-vaat-manset-lbaslik::after { content: ""; display: block; height: 3px; margin-block-start: 16px; background: --accent--; transform-origin: 0 50%; transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  [dir="rtl"] .modulex-deger-vaat-manset-lbaslik::after { transform-origin: 100% 50%; }
+  .modulex-deger-vaat-manset--hazir:not(.modulex-deger-vaat-manset--gor) .modulex-deger-vaat-manset-lbaslik::after { transform: scaleX(0); }
+  .modulex-deger-vaat-manset-gorsel { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .modulex-deger-vaat-manset-lmetin { color: --muted--; font-size: 1.12rem; line-height: 1.8; }
+  .modulex-deger-vaat-manset-lmetin::first-line { color: --text--; font-weight: 700; }
+  .modulex-deger-vaat-manset-kenar { display: grid; align-content: start; padding-inline-start: clamp(24px, 4vw, 52px); }
+  .modulex-deger-vaat-manset-haber { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; padding-block: 20px; border-block-end: 1px solid --cizgi--; transition: opacity 0.6s ease calc(var(--i) * 0.1s), transform 0.6s ease calc(var(--i) * 0.1s); }
+  .modulex-deger-vaat-manset-haber:first-child { padding-block-start: 0; }
+  .modulex-deger-vaat-manset--hazir:not(.modulex-deger-vaat-manset--gor) .modulex-deger-vaat-manset-haber { opacity: 0; transform: translateY(14px); }
+  .modulex-deger-vaat-manset-hno { color: --accentInk--; font-family: var(--mx-font-serif, var(--mx-font-heading, serif)); font-size: 2.2rem; font-style: italic; font-weight: 700; line-height: 1; transition: transform 0.3s ease; }
+  .modulex-deger-vaat-manset-haber:hover .modulex-deger-vaat-manset-hno { transform: translateY(-3px); }
+  .modulex-deger-vaat-manset-hyazi { display: grid; gap: 6px; }
+  .modulex-deger-vaat-manset-ikon { color: --accentInk--; font-size: 22px; }
+  .modulex-deger-vaat-manset-kbaslik { font-family: var(--mx-font-serif, var(--mx-font-heading, serif)); font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
+  .modulex-deger-vaat-manset-kmetin { color: --muted--; font-size: 0.95rem; }
+  @media (max-width: 1024px) {
+    .modulex-deger-vaat-manset-sayfa { grid-template-columns: minmax(0, 1fr); }
+    .modulex-deger-vaat-manset-lead { padding-inline-end: 0; padding-block-end: 28px; border-inline-end: 0; border-block-end: 1px solid --cizgi--; }
+    .modulex-deger-vaat-manset-kenar { padding-inline-start: 0; padding-block-start: 22px; }
+  }
+  .modulex-deger-vaat-manset-bag { color: inherit; text-decoration: none; }
+  .modulex-deger-vaat-manset-bag::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .modulex-deger-vaat-manset-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-vaat-manset :is(.modulex-deger-vaat-manset-baslik, .modulex-deger-vaat-manset-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-vaat-manset-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-deger-vaat-manset { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-deger-vaat-manset *, .modulex-deger-vaat-manset *::before, .modulex-deger-vaat-manset *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-deger-vaat-manset";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const gozlem = (s, P, az) => {
+        const gor = () => s.classList.add(P + "--gor");
+        s.classList.add(P + "--hazir");
+        if (az || !("IntersectionObserver" in window)) { gor(); return; }
+        const io = new IntersectionObserver((gs) => {
+          gs.forEach((g) => { if (g.isIntersecting) { gor(); io.disconnect(); } });
+        }, { threshold: 0.15 });
+        io.observe(s);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      gozlem(s, P, az);
+    });
+  })();
+</script>

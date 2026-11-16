@@ -1,0 +1,133 @@
+<section class="modulex-cagri-brief-cumle{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-cagri-brief-cumle-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* cagri-brief-cumle — cagri-dev-yazi tipografiyi süs olarak kullanır, cagri-sohbet yanıtları düğme yapar; bu modülde cümlenin kendisi bir form — çoklu seçimli çipler cümlenin içinde durur ve brief'i bağlantıya taşır (cagri-on-gorusme'nin tek seçimli takvim kartından farklı). */
+  .modulex-cagri-brief-cumle { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --yaziRenk--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-cagri-brief-cumle *, .modulex-cagri-brief-cumle *::before, .modulex-cagri-brief-cumle *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-cagri-brief-cumle :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-cagri-brief-cumle :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-cagri-brief-cumle :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-cagri-brief-cumle :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-cagri-brief-cumle img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-cagri-brief-cumle) img { height: auto; }
+  .modulex-cagri-brief-cumle [hidden] { display: none !important; }
+  .modulex-cagri-brief-cumle :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-cagri-brief-cumle :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-cagri-brief-cumle-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-cagri-brief-cumle-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-cagri-brief-cumle--bassiz .modulex-cagri-brief-cumle-bas { display: none; }
+  .modulex-cagri-brief-cumle-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-cagri-brief-cumle-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-cagri-brief-cumle-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-cagri-brief-cumle-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-cagri-brief-cumle-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-cagri-brief-cumle-dugme:hover { transform: translateY(-2px); }
+  .modulex-cagri-brief-cumle-dugme--ikincil { background: transparent; color: --yaziRenk--; border-color: --cizgi--; }
+  .modulex-cagri-brief-cumle-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-cagri-brief-cumle-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-cagri-brief-cumle-brief { display: grid; gap: clamp(24px, 4vw, 44px); }
+  .modulex-cagri-brief-cumle-ust-satir { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 20px; padding-block-end: 16px; border-block-end: 1px solid --cizgi--; }
+  .modulex-cagri-brief-cumle-baslik { font-size: clamp(1.1rem, 1.8vw, 1.4rem); font-weight: 700; letter-spacing: 0; }
+  .modulex-cagri-brief-cumle-cumle { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.7rem, 4.6vw, 3.6rem); font-weight: 750; letter-spacing: -0.03em; line-height: 1.45; }
+  .modulex-cagri-brief-cumle-parca { color: color-mix(in srgb, --yaziRenk-- 82%, --bg--); }
+  .modulex-cagri-brief-cumle-cipler { display: inline; }
+  .modulex-cagri-brief-cumle-cip { display: inline-flex; align-items: center; gap: 8px; margin: 4px 2px; padding: 0.15em 0.6em; border: 2px dashed color-mix(in srgb, --yaziRenk-- 45%, transparent); border-radius: 999px; background: transparent; color: --yaziRenk--; font: inherit; font-size: 0.62em; font-weight: 700; letter-spacing: -0.01em; line-height: 1.4; vertical-align: middle; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease; }
+  .modulex-cagri-brief-cumle-cip:hover { border-color: --accent--; transform: translateY(-2px); }
+  .modulex-cagri-brief-cumle-cip .material-symbols-outlined { font-size: 0.95em; }
+  .modulex-cagri-brief-cumle-tamam { display: none; }
+  .modulex-cagri-brief-cumle-cip[aria-pressed="true"] { border-style: solid; border-color: --accent--; background: --accent--; color: --accentText--; }
+  .modulex-cagri-brief-cumle-cip[aria-pressed="true"] .modulex-cagri-brief-cumle-arti { display: none; }
+  .modulex-cagri-brief-cumle-cip[aria-pressed="true"] .modulex-cagri-brief-cumle-tamam { display: inline; }
+  .modulex-cagri-brief-cumle:not(.modulex-cagri-brief-cumle--csjs) .modulex-cagri-brief-cumle-arti { display: none; }
+  .modulex-cagri-brief-cumle:not(.modulex-cagri-brief-cumle--csjs) .modulex-cagri-brief-cumle-cip { border-style: solid; cursor: default; }
+  .modulex-cagri-brief-cumle-alt { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px 48px; align-items: end; }
+  .modulex-cagri-brief-cumle-eylem { display: grid; justify-items: end; gap: 10px; }
+  .modulex-cagri-brief-cumle-ozet { display: flex; align-items: center; gap: 8px; color: --accentInk--; font-weight: 700; animation: modulex-cagri-brief-cumle-gel 0.35s ease both; }
+  .modulex-cagri-brief-cumle-oikon { font-size: 20px; }
+  .modulex-cagri-brief-cumle-alt .modulex-cagri-brief-cumle-cta { margin: 0; }
+  @keyframes modulex-cagri-brief-cumle-gel { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 768px) {
+    .modulex-cagri-brief-cumle-alt { grid-template-columns: minmax(0, 1fr); }
+    .modulex-cagri-brief-cumle-eylem { justify-items: start; }
+    .modulex-cagri-brief-cumle-cip { font-size: 0.7em; }
+  }
+  .modulex-cagri-brief-cumle-wasvg { width: 1.25em; height: 1.25em; flex: none; }
+  .modulex-cagri-brief-cumle-maddeler { display: grid; gap: 12px; }
+  .modulex-cagri-brief-cumle-madde { display: flex; align-items: flex-start; gap: 12px; }
+  .modulex-cagri-brief-cumle-mikon { flex: none; color: --accentInk--; font-size: 24px; }
+  .modulex-cagri-brief-cumle-myazi { display: grid; gap: 2px; }
+  .modulex-cagri-brief-cumle-myazi strong { font-weight: 700; }
+  .modulex-cagri-brief-cumle-myazi small { color: --muted--; font-size: 0.92rem; }
+  .modulex-cagri-brief-cumle-not { color: --muted--; font-size: 0.9rem; }
+  .modulex-cagri-brief-cumle-saat { display: flex; align-items: center; gap: 8px; color: --muted--; font-size: 0.95rem; }
+  .modulex-cagri-brief-cumle-saat .material-symbols-outlined { font-size: 20px; color: --accentInk--; }
+  .modulex-cagri-brief-cumle-metin { max-width: 62ch; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-brief-cumle :is(.modulex-cagri-brief-cumle-baslik, .modulex-cagri-brief-cumle-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-brief-cumle-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-cagri-brief-cumle { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-cagri-brief-cumle *, .modulex-cagri-brief-cumle *::before, .modulex-cagri-brief-cumle *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-cagri-brief-cumle";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const cagriSec = (s, P) => {
+        const gruplar = [...s.querySelectorAll("[data-cs-grup]")];
+        if (!gruplar.length) return;
+        s.classList.add(P + "--csjs");
+        const baglar = [...s.querySelectorAll("[data-cs-bag]")];
+        baglar.forEach((a) => { a.dataset.csTaban = a.getAttribute("href") || ""; });
+        const cipler = gruplar.flatMap((g) => [...g.querySelectorAll("[data-cs]")]);
+        const paneller = [...s.querySelectorAll("[data-cs-panel]")];
+        const bagla = (a, metin) => {
+          const taban = a.dataset.csTaban;
+          if (!metin || !taban) { a.setAttribute("href", taban); return; }
+          let u;
+          try { u = new URL(taban, location.href); } catch (x) { return; }
+          const ek = a.dataset.csOnek ? a.dataset.csOnek + " " + metin : metin;
+          if (u.protocol === "mailto:") u.searchParams.set("body", [u.searchParams.get("body") || "", ek].filter(Boolean).join("\n"));
+          else if (/(^|\.)(wa\.me|whatsapp\.com)$/i.test(u.hostname)) u.searchParams.set("text", [u.searchParams.get("text") || "", ek].filter(Boolean).join("\n"));
+          else u.searchParams.set(a.dataset.csParam || "secim", metin);
+          a.setAttribute("href", u.href.replace(/\?[^#]*/, (q) => q.replace(/\+/g, "%20")));
+        };
+        const guncelle = () => {
+          const secili = cipler.filter((c) => c.getAttribute("aria-pressed") === "true").map((c) => c.dataset.cs);
+          const metin = secili.join(", ");
+          s.querySelectorAll("[data-cs-cikti]").forEach((o) => { o.textContent = metin; const k = o.closest("[data-cs-kap]") || o; k.hidden = !metin; });
+          paneller.forEach((p) => { p.hidden = !secili.includes(p.dataset.csPanel); });
+          baglar.forEach((a) => bagla(a, metin));
+          s.classList.toggle(P + "--secili", secili.length > 0);
+        };
+        gruplar.forEach((g) => {
+          const coklu = g.dataset.csGrup === "coklu";
+          const ic = [...g.querySelectorAll("[data-cs]")];
+          ic.forEach((c) => c.addEventListener("click", () => {
+            const acik = c.getAttribute("aria-pressed") === "true";
+            if (!coklu) ic.forEach((x) => x.setAttribute("aria-pressed", "false"));
+            c.setAttribute("aria-pressed", String(coklu ? !acik : true));
+            guncelle();
+          }));
+        });
+        guncelle();
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      cagriSec(s, P, az);
+    });
+  })();
+</script>

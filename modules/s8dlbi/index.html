@@ -1,0 +1,120 @@
+<section class="modulex-acilis-video-paralaks{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-acilis-video-paralaks-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* acilis-video-paralaks — hero-5'in tam ekran parallax/video düzeninin kart odaklı biçimi: metin ortada değil alt köşede, medya hareketi CSS kaydırma zaman çizelgesiyle (JS'siz) — reduced-motion'da sabit, video hiç oynamaz. */
+  .modulex-acilis-video-paralaks { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-acilis-video-paralaks *, .modulex-acilis-video-paralaks *::before, .modulex-acilis-video-paralaks *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-acilis-video-paralaks :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-acilis-video-paralaks :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-acilis-video-paralaks :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-acilis-video-paralaks :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-acilis-video-paralaks img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-acilis-video-paralaks) img { height: auto; }
+  .modulex-acilis-video-paralaks [hidden] { display: none !important; }
+  .modulex-acilis-video-paralaks :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-acilis-video-paralaks :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-acilis-video-paralaks-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-acilis-video-paralaks-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-acilis-video-paralaks--bassiz .modulex-acilis-video-paralaks-bas { display: none; }
+  .modulex-acilis-video-paralaks-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-acilis-video-paralaks-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-acilis-video-paralaks-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-acilis-video-paralaks-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-acilis-video-paralaks-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-acilis-video-paralaks-dugme:hover { transform: translateY(-2px); }
+  .modulex-acilis-video-paralaks-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-acilis-video-paralaks-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-acilis-video-paralaks-dugme .material-symbols-outlined { font-size: 20px; }
+
+  section.modulex-acilis-video-paralaks { padding: 0; }
+  .modulex-acilis-video-paralaks-ic { max-width: none; }
+  .modulex-acilis-video-paralaks-sahne { position: relative; display: grid; align-content: end; min-height: max(600px, 92vh); padding: --bosluk-- clamp(16px, 5vw, 64px) 96px; isolation: isolate; overflow: hidden; }
+  .modulex-acilis-video-paralaks-katman { position: absolute; inset: -8% 0 0; z-index: -2; }
+  .modulex-acilis-video-paralaks-arka, .modulex-acilis-video-paralaks-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  @supports (animation-timeline: view()) {
+    .modulex-acilis-video-paralaks-katman { animation: modulex-acilis-video-paralaks-px linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+    @keyframes modulex-acilis-video-paralaks-px { from { transform: translateY(0); } to { transform: translateY(16%) scale(1.06); } }
+  }
+  .modulex-acilis-video-paralaks-perde { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, color-mix(in srgb, --ortu-- 78%, transparent), color-mix(in srgb, --ortu-- 20%, transparent) 70%); }
+  .modulex-acilis-video-paralaks-kart { display: grid; gap: 18px; justify-items: start; max-width: 680px; padding: clamp(22px, 4vw, 40px); border: 1px solid color-mix(in srgb, --ortuText-- 22%, transparent); border-radius: --yuvarlak--; background-color: color-mix(in srgb, --ortu-- 72%, transparent); color: --ortuText--; backdrop-filter: blur(10px); }
+  .modulex-acilis-video-paralaks-kart :is(.modulex-acilis-video-paralaks-ust, .modulex-acilis-video-paralaks-metin, .modulex-acilis-video-paralaks-ometin, .modulex-acilis-video-paralaks-oikon, .modulex-acilis-video-paralaks-odeger) { color: --ortuText--; }
+  .modulex-acilis-video-paralaks-kart .modulex-acilis-video-paralaks-dugme--ikincil { color: --ortuText--; border-color: color-mix(in srgb, --ortuText-- 60%, transparent); }
+  .modulex-acilis-video-paralaks-kart :where(a, button):focus-visible { outline-color: --ortuText--; }
+  .modulex-acilis-video-paralaks-asagi { position: absolute; inset-block-end: 24px; inset-inline-start: 50%; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: 999px; background-color: color-mix(in srgb, --ortu-- 60%, transparent); color: --ortuText--; font-size: 0.9rem; font-weight: 700; text-decoration: none; transform: translateX(-50%); }
+  .modulex-acilis-video-paralaks-asagi:dir(rtl) { transform: translateX(50%); }
+  .modulex-acilis-video-paralaks-asagi .material-symbols-outlined { animation: modulex-acilis-video-paralaks-zip 1.8s ease-in-out infinite; }
+  .modulex-acilis-video-paralaks-asagi:focus-visible { outline-color: --ortuText--; }
+  @keyframes modulex-acilis-video-paralaks-zip { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+  .modulex-acilis-video-paralaks-kontrol { position: absolute; inset-block-end: 24px; inset-inline-end: 24px; display: inline-grid; place-items: center; width: 48px; height: 48px; border: 1px solid color-mix(in srgb, --ortuText-- 50%, transparent); border-radius: 50%; background-color: color-mix(in srgb, --ortu-- 60%, transparent); color: --ortuText--; }
+  .modulex-acilis-video-paralaks-kontrol:focus-visible { outline-color: --ortuText--; }
+  .modulex-acilis-video-paralaks-son { position: absolute; inset-block-end: 0; inset-inline-start: 0; width: 1px; height: 1px; }
+  @media (max-width: 768px) {
+    .modulex-acilis-video-paralaks-sahne { padding-block-end: 88px; }
+    .modulex-acilis-video-paralaks-asagi { inset-inline-start: 16px; transform: none; }
+    .modulex-acilis-video-paralaks-asagi:dir(rtl) { transform: none; }
+    .modulex-acilis-video-paralaks-kontrol { inset-block-end: 22px; inset-inline-end: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-acilis-video-paralaks-video { display: none; }
+    .modulex-acilis-video-paralaks-katman { animation: none !important; transform: none !important; }
+  }
+  .modulex-acilis-video-paralaks-h1 { font-family: var(--mx-font-heading, inherit); font-size: clamp(2.3rem, 5.2vw, 4.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; text-wrap: balance; }
+  .modulex-acilis-video-paralaks-metin { color: --muted--; font-size: clamp(1.02rem, 1.3vw, 1.18rem); line-height: 1.7; max-width: 62ch; }
+  .modulex-acilis-video-paralaks-ogeler { display: flex; flex-wrap: wrap; gap: 14px 30px; }
+  .modulex-acilis-video-paralaks-oge { display: flex; align-items: center; gap: 10px; }
+  .modulex-acilis-video-paralaks-oikon { color: --accentInk--; font-size: 22px; }
+  .modulex-acilis-video-paralaks-odeger { font-size: 1.45rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .modulex-acilis-video-paralaks-ometin { color: --muted--; font-size: 0.95rem; }
+  .modulex-acilis-video-paralaks-obag { color: inherit; text-underline-offset: 3px; }
+  .modulex-acilis-video-paralaks-gir { animation: modulex-acilis-video-paralaks-gir 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  @keyframes modulex-acilis-video-paralaks-gir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-video-paralaks-h1 { letter-spacing: 0; line-height: 1.3; }
+  .modulex-acilis-video-paralaks-sahne { background: --ortu--; color: --ortuText--; }
+  .modulex-acilis-video-paralaks-sahne :is(.modulex-acilis-video-paralaks-ust, .modulex-acilis-video-paralaks-metin, .modulex-acilis-video-paralaks-ometin, .modulex-acilis-video-paralaks-oikon, .modulex-acilis-video-paralaks-odeger) { color: --ortuText--; }
+  .modulex-acilis-video-paralaks-sahne .modulex-acilis-video-paralaks-dugme--ikincil { color: --ortuText--; border-color: color-mix(in srgb, --ortuText-- 60%, transparent); }
+  .modulex-acilis-video-paralaks-sahne .modulex-acilis-video-paralaks-dugme--ikincil:hover { border-color: --ortuText--; }
+  .modulex-acilis-video-paralaks-sahne :where(a, button):focus-visible { outline-color: --ortuText--; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-video-paralaks :is(.modulex-acilis-video-paralaks-baslik, .modulex-acilis-video-paralaks-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-acilis-video-paralaks-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-acilis-video-paralaks { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-acilis-video-paralaks *, .modulex-acilis-video-paralaks *::before, .modulex-acilis-video-paralaks *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-acilis-video-paralaks";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const video = (s, P, az) => {
+      const v = s.querySelector("video");
+      const b = s.querySelector("[data-video]");
+      if (!v || !b) return;
+      const ik = b.querySelector("span");
+      const yaz = (oynuyor) => {
+        b.setAttribute("aria-label", oynuyor ? b.dataset.durdur : b.dataset.oynat);
+        b.setAttribute("aria-pressed", String(!oynuyor));
+        if (ik) ik.textContent = oynuyor ? "pause" : "play_arrow";
+      };
+      if (az) { v.removeAttribute("autoplay"); v.pause(); yaz(false); }
+      b.addEventListener("click", () => {
+        if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => yaz(false)); yaz(true); } else { v.pause(); yaz(false); }
+      });
+    };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      video(s, P, az);
+    });
+  })();
+</script>

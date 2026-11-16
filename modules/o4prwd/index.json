@@ -1,0 +1,51 @@
+{
+  "name": "Değer Vaat Manşet — gazete künyesi, manşet vaat + numaralı yan sütun",
+  "description": "Gazete ön sayfası: çift çizgili künyede bölüm başlığı (ust bir «baskı» satırı), altında ilk vaat tırnaklı dev serif manşet (görsel varsa manşet fotoğrafı, ilk satırı kalın öz), sağ sütunda kalan vaatler numaralı haber başlıkları. Görününce manşet çizgisi çizilir, yan haberler sırayla gelir. deger-dergi eşit iki sütun + bas harftir, deger-merkez-vurgu simetrik üç sütundur; bu modül asimetrik ön sayfa (künye + manşet + numaralı yan sütun) kurar, başlık bloğu künyenin kendisidir. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "newspaper",
+  "category": "values",
+  "subCategory": "front-page",
+  "tags": [
+    "values",
+    "editorial",
+    "front-page",
+    "asymmetric",
+    "serif",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "ikon": "Material Symbols adı",
+      "baslik": "dil sözlüğü (zorunlu)",
+      "metin": "dil sözlüğü",
+      "etiket": "dil sözlüğü (küçük üst etiket)",
+      "img": "görsel yolu (destekleyen yerleşimde)",
+      "url": "iç/dış bağlantı (kartın tamamı tıklanır)"
+    }
+  }
+}

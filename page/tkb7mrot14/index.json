@@ -1,0 +1,40 @@
+{
+  "id": "tkb7mrot14",
+  "name": {
+    "tr": "Malzeme",
+    "en": "Materials",
+    "ar": "الخامات"
+  },
+  "description": {
+    "tr": "Masif meşe, ceviz kaplama ve mat lake karşılaştırması.",
+    "en": "Solid oak, walnut veneer and matt lacquer compared.",
+    "ar": "مقارنة بين البلوط الصلب وقشرة الجوز واللاكيه المطفأ."
+  },
+  "keyword": {
+    "tr": "masif meşe, ceviz, lake",
+    "en": "solid oak, walnut, lacquer",
+    "ar": "بلوط، جوز، لاكيه"
+  },
+  "path": "hizmetler",
+  "icon": "forest",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "ngd2zj",
+      "ory1m0"
+    ],
+    "footer": []
+  },
+  "index": 0,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Malzeme",
+    "en": "Materials",
+    "ar": "الخامات"
+  },
+  "date": "2026-11-16T16:07:23.654Z",
+  "update": "2026-11-16T16:19:50.938Z"
+}

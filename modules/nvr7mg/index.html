@@ -1,0 +1,146 @@
+<section class="modulex-surec-hafta-tahmin{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-surec-hafta-tahmin-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* surec-hafta-tahmin — surec-ters-sutun eşit sütunlu, surec-yatay-ray kaydırmalı kartlardır; bu modül adımları süreleriyle orantılı bir zaman bandına (Gantt) ve hafta cetveline döker, sipariş tarihinden adım bitişlerini ve teslim tarihini hesaplar — tarih girdisi + orantılı bant ailede yok. */
+  .modulex-surec-hafta-tahmin { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-surec-hafta-tahmin *, .modulex-surec-hafta-tahmin *::before, .modulex-surec-hafta-tahmin *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-surec-hafta-tahmin :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-surec-hafta-tahmin :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-surec-hafta-tahmin :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-surec-hafta-tahmin :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-surec-hafta-tahmin img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-surec-hafta-tahmin) img { height: auto; }
+  .modulex-surec-hafta-tahmin [hidden] { display: none !important; }
+  .modulex-surec-hafta-tahmin :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-surec-hafta-tahmin :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-surec-hafta-tahmin-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-surec-hafta-tahmin-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-surec-hafta-tahmin--bassiz .modulex-surec-hafta-tahmin-bas { display: none; }
+  .modulex-surec-hafta-tahmin-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-surec-hafta-tahmin-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-surec-hafta-tahmin-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-surec-hafta-tahmin-bas { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 48px; align-items: end; }
+  .modulex-surec-hafta-tahmin-ust { grid-column: 1 / -1; }
+  .modulex-surec-hafta-tahmin-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-surec-hafta-tahmin-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-surec-hafta-tahmin-dugme:hover { transform: translateY(-2px); }
+  .modulex-surec-hafta-tahmin-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-surec-hafta-tahmin-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-surec-hafta-tahmin-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-surec-hafta-tahmin-plan { display: grid; gap: 16px; }
+  .modulex-surec-hafta-tahmin-panel { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; margin-block-end: 8px; }
+  .modulex-surec-hafta-tahmin-toplam { display: grid; gap: 2px; }
+  .modulex-surec-hafta-tahmin-tetiket, .modulex-surec-hafta-tahmin-tsetk { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .modulex-surec-hafta-tahmin-tetiket { color: --muted--; }
+  .modulex-surec-hafta-tahmin-tdeger { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 850; letter-spacing: -0.03em; line-height: 1.05; }
+  .modulex-surec-hafta-tahmin-tahmin { display: flex; flex-wrap: wrap; align-items: end; gap: 10px 16px; }
+  .modulex-surec-hafta-tahmin:not(.modulex-surec-hafta-tahmin--hjs) .modulex-surec-hafta-tahmin-tahmin { display: none; }
+  .modulex-surec-hafta-tahmin-talan { display: grid; gap: 4px; }
+  .modulex-surec-hafta-tahmin-tetk { color: --muted--; font-size: 0.82rem; font-weight: 700; }
+  .modulex-surec-hafta-tahmin-tgir { min-height: 46px; padding: 8px 12px; border: 1px solid --cizgi--; border-radius: 10px; background: --kartBg--; color: --text--; font: inherit; transition: border-color 0.25s ease; }
+  .modulex-surec-hafta-tahmin-tgir:hover, .modulex-surec-hafta-tahmin-tgir:focus { border-color: --accent--; }
+  .modulex-surec-hafta-tahmin-teslim { display: grid; gap: 2px; min-height: 46px; padding: 6px 16px; border-radius: 10px; background: --vurguBg--; color: --vurguText--; }
+  .modulex-surec-hafta-tahmin-teslim strong { font-size: 1.05rem; font-weight: 800; }
+  .modulex-surec-hafta-tahmin-bant { display: flex; gap: 4px; }
+  .modulex-surec-hafta-tahmin-dilim { flex: var(--h) 1 0; display: grid; align-content: space-between; gap: 6px; min-width: 0; min-height: 96px; padding: 12px 14px; border-block-start: 6px solid color-mix(in srgb, --accent-- min(100%, calc(35% + var(--k) * 20%)), --kartBg--); border-radius: 6px 6px 10px 10px; background: --kartBg--; overflow: hidden; transition: box-shadow 0.25s ease, transform 0.25s ease; }
+  .modulex-surec-hafta-tahmin-dno { color: --accentInk--; font-size: 0.75rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .modulex-surec-hafta-tahmin-dad { font-weight: 750; line-height: 1.25; overflow-wrap: anywhere; }
+  .modulex-surec-hafta-tahmin-dhf { color: --muted--; font-size: 0.82rem; font-weight: 600; }
+  .modulex-surec-hafta-tahmin-dilim.modulex-surec-hafta-tahmin-on { box-shadow: 0 0 0 2px --accent--; transform: translateY(-2px); }
+  .modulex-surec-hafta-tahmin-cetvel { display: flex; border-block-start: 1px solid --cizgi--; }
+  .modulex-surec-hafta-tahmin-cetvel span { flex: 1 1 0; padding-block-start: 6px; border-inline-start: 1px solid --cizgi--; color: --muted--; font-size: 0.72rem; text-align: center; font-variant-numeric: tabular-nums; }
+  .modulex-surec-hafta-tahmin-cetvel span:last-child { border-inline-end: 1px solid --cizgi--; }
+  .modulex-surec-hafta-tahmin-adimlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 14px; margin-block-start: 12px; }
+  .modulex-surec-hafta-tahmin-adim { position: relative; display: grid; align-content: start; gap: 8px; padding: 18px; border: 1px solid --cizgi--; border-radius: --yuvarlak--; background: --bg--; transition: box-shadow 0.25s ease, border-color 0.25s ease; }
+  .modulex-surec-hafta-tahmin-adim.modulex-surec-hafta-tahmin-on { border-color: --accent--; box-shadow: 0 16px 30px -26px color-mix(in srgb, --text-- 60%, transparent); }
+  .modulex-surec-hafta-tahmin-aust { display: flex; align-items: center; gap: 8px; }
+  .modulex-surec-hafta-tahmin-renk { flex: none; width: 14px; height: 14px; border-radius: 4px; background: color-mix(in srgb, --accent-- min(100%, calc(35% + var(--k) * 20%)), --kartBg--); }
+  .modulex-surec-hafta-tahmin-kbaslik { font-size: 1.1rem; font-weight: 750; }
+  .modulex-surec-hafta-tahmin-kmetin { color: --muted--; font-size: 0.93rem; }
+  .modulex-surec-hafta-tahmin-bitis { display: inline-flex; align-items: center; gap: 6px; color: --accentInk--; font-size: 0.86rem; font-weight: 700; }
+  .modulex-surec-hafta-tahmin-bitis .material-symbols-outlined { font-size: 18px; }
+  @media (max-width: 1024px) { .modulex-surec-hafta-tahmin-dilim { padding: 10px; } .modulex-surec-hafta-tahmin-cetvel span { font-size: 0.65rem; } }
+  @media (max-width: 768px) {
+    .modulex-surec-hafta-tahmin-bant { flex-direction: column; }
+    .modulex-surec-hafta-tahmin-dilim { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-height: calc(40px + var(--h) * 6px); border-block-start: 0; border-inline-start: 6px solid color-mix(in srgb, --accent-- min(100%, calc(35% + var(--k) * 20%)), --kartBg--); border-radius: 6px; }
+    .modulex-surec-hafta-tahmin-dhf { margin-inline-start: auto; }
+    .modulex-surec-hafta-tahmin-cetvel { display: none; }
+    .modulex-surec-hafta-tahmin-panel { align-items: stretch; }
+  }
+  .modulex-surec-hafta-tahmin-sure { display: inline-flex; align-items: center; gap: 6px; justify-self: start; width: fit-content; padding: 4px 12px; border-radius: 999px; background: color-mix(in srgb, --accent-- 12%, transparent); color: --text--; font-size: 0.85rem; font-weight: 600; }
+  .modulex-surec-hafta-tahmin-sure .material-symbols-outlined { font-size: 18px; color: --accentInk--; }
+  .modulex-surec-hafta-tahmin-etiket { color: --accentInk--; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .modulex-surec-hafta-tahmin-bag { color: inherit; text-decoration: none; }
+  .modulex-surec-hafta-tahmin-bag::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .modulex-surec-hafta-tahmin-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-surec-hafta-tahmin :is(.modulex-surec-hafta-tahmin-baslik, .modulex-surec-hafta-tahmin-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-surec-hafta-tahmin-baslik { line-height: 1.35; }
+  @media (max-width: 1024px) {
+    .modulex-surec-hafta-tahmin-bas { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .modulex-surec-hafta-tahmin { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-surec-hafta-tahmin *, .modulex-surec-hafta-tahmin *::before, .modulex-surec-hafta-tahmin *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-surec-hafta-tahmin";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const haftaTahmin = (s, P) => {
+        const es = [...s.querySelectorAll("[data-hafta-i]")];
+        es.forEach((e) => {
+          const ikiz = () => es.filter((x) => x.dataset.haftaI === e.dataset.haftaI);
+          ["mouseenter", "focusin"].forEach((t) => e.addEventListener(t, () => ikiz().forEach((x) => x.classList.add(P + "-on"))));
+          ["mouseleave", "focusout"].forEach((t) => e.addEventListener(t, () => ikiz().forEach((x) => x.classList.remove(P + "-on"))));
+        });
+        const g = s.querySelector("[data-hafta-gir]");
+        const kart = [...s.querySelectorAll("[data-hafta]")];
+        if (!g || !kart.length) return;
+        s.classList.add(P + "--hjs");
+        let tf = null;
+        try { tf = new Intl.DateTimeFormat(document.documentElement.lang || undefined, { day: "numeric", month: "long", year: "numeric" }); } catch (x) { tf = null; }
+        const iso = (t) => `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+        const coz = (v) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || ""); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; };
+        const bugun = new Date();
+        bugun.setHours(0, 0, 0, 0);
+        if (!g.value) g.value = iso(bugun);
+        const son = s.querySelector("[data-hafta-son]");
+        const hesap = () => {
+          const t0 = coz(g.value) || bugun;
+          let gun = 0;
+          let t = new Date(t0);
+          kart.forEach((k) => {
+            gun += Math.round((Number(k.dataset.hafta) || 0) * 7);
+            t = new Date(t0);
+            t.setDate(t0.getDate() + gun);
+            const p = k.querySelector("[data-hafta-tarih]");
+            const y = k.querySelector("[data-hafta-yaz]");
+            if (p && y) { y.textContent = tf ? tf.format(t) : iso(t); p.hidden = false; }
+          });
+          if (son) son.textContent = tf ? tf.format(t) : iso(t);
+        };
+        g.addEventListener("input", hesap);
+        g.addEventListener("change", hesap);
+        hesap();
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      haftaTahmin(s, P, az);
+    });
+  })();
+</script>

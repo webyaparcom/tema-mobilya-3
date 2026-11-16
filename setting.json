@@ -1,0 +1,54 @@
+{
+  "order": false,
+  "user": false,
+  "description": {
+    "tr": "Ilgın Atölye: ölçüye ısmarlama masa, kitaplık, gardırop ve TV ünitesi; malzemeyi birlikte seçer, haftalık takvimle üretiriz. Demo site; içerik kurgusaldır.",
+    "en": "Ilgin Atelier: made-to-measure tables, bookcases, wardrobes and TV units; we choose the material together and build on a weekly schedule. Demo site; content is fictional.",
+    "ar": "أتيليه إلغين: طاولات ومكتبات وخزائن ملابس ووحدات تلفاز حسب المقاس؛ نختار الخامة معًا ونصنع وفق جدول أسبوعي. موقع تجريبي؛ المحتوى افتراضي."
+  },
+  "keyword": {
+    "tr": "ısmarlama mobilya, ölçüye özel, masif meşe, kitaplık, gardırop, Gaziantep",
+    "en": "bespoke furniture, made to measure, solid oak, bookcase, wardrobe, Gaziantep",
+    "ar": "أثاث حسب الطلب، حسب المقاس، بلوط صلب، مكتبة، خزانة ملابس، غازي عنتاب"
+  },
+  "category": "Kurumsal",
+  "name": "Ilgın Atölye",
+  "domain": "mobilya-3.webyapar.com",
+  "langs": {
+    "tr": true,
+    "en": true,
+    "ar": true,
+    "de": false,
+    "ru": false,
+    "es": false,
+    "fr": false,
+    "it": false,
+    "ja": false,
+    "zh": false,
+    "ko": false,
+    "pt": false
+  },
+  "logo": "logo.png",
+  "multi": false,
+  "publishMode": "static",
+  "font": {
+    "body": "nunito-sans",
+    "heading": "barlow-condensed",
+    "ar": {
+      "body": "ibm-plex-sans-arabic",
+      "heading": "noto-kufi-arabic"
+    }
+  },
+  "colorScheme": "auto",
+  "theme_color": "#706A63",
+  "seo": {
+    "noindex": true
+  },
+  "cssTokens": {
+    "--mx-radius-sm": "0px",
+    "--mx-radius-md": "0px",
+    "--mx-radius-lg": "0px",
+    "--mx-radius-xl": "0px"
+  },
+  "icon": "icon.png"
+}
