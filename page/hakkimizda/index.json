@@ -1,0 +1,47 @@
+{
+  "name": {
+    "tr": "Atölye",
+    "en": "Atelier",
+    "ar": "الأتيليه"
+  },
+  "status": "play",
+  "category": "",
+  "id": "hakkimizda",
+  "url": "",
+  "path": "hakkimizda",
+  "index": 1,
+  "icon": "info",
+  "desing": {
+    "header": [],
+    "body": [
+      "o4prwd",
+      "nvr7mg"
+    ],
+    "footer": []
+  },
+  "pathnext": "",
+  "description": {
+    "tr": "Ölçüye ısmarlama mobilya yapan kurgusal atölye.",
+    "en": "A fictional atelier making bespoke furniture to measure.",
+    "ar": "أتيليه افتراضي يصنع أثاثًا حسب المقاس والطلب."
+  },
+  "spot": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "desc": {},
+  "title": {
+    "tr": "Atölye",
+    "en": "Atelier",
+    "ar": "الأتيليه"
+  },
+  "keyword": {
+    "tr": "hakkımızda",
+    "en": "about",
+    "ar": "من نحن"
+  },
+  "text": {},
+  "update": "2026-11-16T16:19:50.941Z",
+  "date": "2026-10-30"
+}

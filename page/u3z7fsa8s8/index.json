@@ -1,0 +1,40 @@
+{
+  "id": "u3z7fsa8s8",
+  "name": {
+    "tr": "Brief",
+    "en": "Brief",
+    "ar": "الطلب"
+  },
+  "description": {
+    "tr": "Ismarlama parça için brief (demo).",
+    "en": "Brief for a bespoke piece (demo).",
+    "ar": "طلب قطعة حسب الطلب (تجريبي)."
+  },
+  "keyword": {
+    "tr": "ısmarlama, brief",
+    "en": "bespoke, brief",
+    "ar": "حسب الطلب"
+  },
+  "path": "teklif-al",
+  "icon": "edit_note",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "ory1m0",
+      "nvr7mg"
+    ],
+    "footer": []
+  },
+  "index": 3,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Brief",
+    "en": "Brief",
+    "ar": "الطلب"
+  },
+  "date": "2026-11-16T16:07:23.672Z",
+  "update": "2026-11-16T16:19:50.948Z"
+}

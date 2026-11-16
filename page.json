@@ -1,0 +1,139 @@
+{
+  "data": [
+    {
+      "id": "tkb7mrot14",
+      "name": {
+        "tr": "Malzeme",
+        "en": "Materials",
+        "ar": "الخامات"
+      },
+      "description": {
+        "tr": "Masif meşe, ceviz kaplama ve mat lake karşılaştırması.",
+        "en": "Solid oak, walnut veneer and matt lacquer compared.",
+        "ar": "مقارنة بين البلوط الصلب وقشرة الجوز واللاكيه المطفأ."
+      },
+      "path": "hizmetler",
+      "icon": "forest",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "ngd2zj",
+          "ory1m0"
+        ],
+        "footer": []
+      },
+      "index": 0
+    },
+    {
+      "name": {
+        "tr": "Atölye",
+        "en": "Atelier",
+        "ar": "الأتيليه"
+      },
+      "status": "play",
+      "id": "hakkimizda",
+      "path": "hakkimizda",
+      "category": "",
+      "url": "",
+      "index": 1,
+      "icon": "info",
+      "desing": {
+        "header": [],
+        "body": [
+          "o4prwd",
+          "nvr7mg"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Ölçüye ısmarlama mobilya yapan kurgusal atölye.",
+        "en": "A fictional atelier making bespoke furniture to measure.",
+        "ar": "أتيليه افتراضي يصنع أثاثًا حسب المقاس والطلب."
+      }
+    },
+    {
+      "id": "zj9ftytwpf",
+      "name": {
+        "tr": "Rehber",
+        "en": "Guide",
+        "ar": "الدليل"
+      },
+      "description": {
+        "tr": "Ölçü, malzeme ve bütçe kararları için adım adım rehber.",
+        "en": "A step-by-step guide to size, material and budget decisions.",
+        "ar": "دليل خطوة بخطوة لقرارات المقاس والخامة والميزانية."
+      },
+      "path": "sorular",
+      "icon": "help",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "n9c4pd",
+          "ory1m0"
+        ],
+        "footer": []
+      },
+      "index": 2
+    },
+    {
+      "id": "u3z7fsa8s8",
+      "name": {
+        "tr": "Brief",
+        "en": "Brief",
+        "ar": "الطلب"
+      },
+      "description": {
+        "tr": "Ismarlama parça için brief (demo).",
+        "en": "Brief for a bespoke piece (demo).",
+        "ar": "طلب قطعة حسب الطلب (تجريبي)."
+      },
+      "path": "teklif-al",
+      "icon": "edit_note",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "ory1m0",
+          "nvr7mg"
+        ],
+        "footer": []
+      },
+      "index": 3
+    },
+    {
+      "name": {
+        "tr": "İletişim",
+        "en": "Contact",
+        "ar": "اتصل بنا"
+      },
+      "status": "play",
+      "id": "iletisim",
+      "path": "iletisim",
+      "category": "",
+      "url": "",
+      "index": 4,
+      "icon": "call",
+      "desing": {
+        "header": [],
+        "body": [
+          "5bgmy7",
+          "k8mp01"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Adres, telefon ve çalışma saatleri.",
+        "en": "Address, phone and opening hours.",
+        "ar": "العنوان والهاتف وساعات العمل."
+      }
+    }
+  ],
+  "desc": []
+}

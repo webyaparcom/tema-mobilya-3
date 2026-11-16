@@ -1,0 +1,40 @@
+{
+  "id": "zj9ftytwpf",
+  "name": {
+    "tr": "Rehber",
+    "en": "Guide",
+    "ar": "الدليل"
+  },
+  "description": {
+    "tr": "Ölçü, malzeme ve bütçe kararları için adım adım rehber.",
+    "en": "A step-by-step guide to size, material and budget decisions.",
+    "ar": "دليل خطوة بخطوة لقرارات المقاس والخامة والميزانية."
+  },
+  "keyword": {
+    "tr": "sss, soru cevap",
+    "en": "faq, questions",
+    "ar": "أسئلة وأجوبة"
+  },
+  "path": "sorular",
+  "icon": "help",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "n9c4pd",
+      "ory1m0"
+    ],
+    "footer": []
+  },
+  "index": 2,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Rehber",
+    "en": "Guide",
+    "ar": "الدليل"
+  },
+  "date": "2026-11-16T16:07:23.667Z",
+  "update": "2026-11-16T16:19:50.945Z"
+}
