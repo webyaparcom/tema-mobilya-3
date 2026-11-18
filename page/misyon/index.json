@@ -3,17 +3,23 @@
   "name": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "description": {
     "tr": "Misyonumuz",
     "en": "Our mission",
-    "ar": "مهمتنا"
+    "ar": "مهمتنا",
+    "de": "Unsere Mission",
+    "ru": "Наша миссия"
   },
   "keyword": {
     "tr": "Misyon",
     "en": "mission, our mission, corporate responsibility",
-    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية"
+    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "path": "misyon",
   "icon": "flag",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Misyonumuz</h2>\n<p>Her parçayı evin ölçüsüne ve kullanıcısının alışkanlığına göre yapmak.</p>",
     "en": "<h2>Our mission</h2>\n<p>To make every piece to the size of the home and the habits of its user.</p>",
-    "ar": "<h2>مهمتنا</h2>\n<p>صنع كل قطعة وفق مقاس البيت وعادات من يستخدمها.</p>"
+    "ar": "<h2>مهمتنا</h2>\n<p>صنع كل قطعة وفق مقاس البيت وعادات من يستخدمها.</p>",
+    "de": "<h2>Unsere Mission</h2>\n<p>Jedes Stück nach Maß des Hauses und den Gewohnheiten des Nutzers anfertigen.</p>",
+    "ru": "<h2>Наша миссия</h2>\n<p>Изготавливать каждую деталь в соответствии с размерами дома и привычками пользователя.</p>"
   },
   "title": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "date": "2026-11-16T16:07:23.480Z",
   "update": "2026-11-16T16:19:50.956Z",

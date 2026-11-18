@@ -3,17 +3,23 @@
   "name": {
     "tr": "Malzeme",
     "en": "Materials",
-    "ar": "الخامات"
+    "ar": "الخامات",
+    "de": "Materialien",
+    "ru": "Материалы"
   },
   "description": {
     "tr": "Masif meşe, ceviz kaplama ve mat lake karşılaştırması.",
     "en": "Solid oak, walnut veneer and matt lacquer compared.",
-    "ar": "مقارنة بين البلوط الصلب وقشرة الجوز واللاكيه المطفأ."
+    "ar": "مقارنة بين البلوط الصلب وقشرة الجوز واللاكيه المطفأ.",
+    "de": "Vergleich von Massiv-Eiche, Nussbaum-Furnier und Mattlack.",
+    "ru": "Сравнение массива дуба, шпона ореха и матового лака."
   },
   "keyword": {
     "tr": "masif meşe, ceviz, lake",
     "en": "solid oak, walnut, lacquer",
-    "ar": "بلوط، جوز، لاكيه"
+    "ar": "بلوط، جوز، لاكيه",
+    "de": "massive Eiche, Nussbaum, Lack",
+    "ru": "массив дуба, орех, лак"
   },
   "path": "hizmetler",
   "icon": "forest",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Malzeme",
     "en": "Materials",
-    "ar": "الخامات"
+    "ar": "الخامات",
+    "de": "Materialien",
+    "ru": "Материалы"
   },
   "date": "2026-11-16T16:07:23.654Z",
   "update": "2026-11-16T16:19:50.938Z"
