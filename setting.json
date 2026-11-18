@@ -4,12 +4,16 @@
   "description": {
     "tr": "Ilgın Atölye: ölçüye ısmarlama masa, kitaplık, gardırop ve TV ünitesi; malzemeyi birlikte seçer, haftalık takvimle üretiriz. Demo site; içerik kurgusaldır.",
     "en": "Ilgin Atelier: made-to-measure tables, bookcases, wardrobes and TV units; we choose the material together and build on a weekly schedule. Demo site; content is fictional.",
-    "ar": "أتيليه إلغين: طاولات ومكتبات وخزائن ملابس ووحدات تلفاز حسب المقاس؛ نختار الخامة معًا ونصنع وفق جدول أسبوعي. موقع تجريبي؛ المحتوى افتراضي."
+    "ar": "أتيليه إلغين: طاولات ومكتبات وخزائن ملابس ووحدات تلفاز حسب المقاس؛ نختار الخامة معًا ونصنع وفق جدول أسبوعي. موقع تجريبي؛ المحتوى افتراضي.",
+    "de": "Ilgın Atölye: maßgefertigte Tische, Bücherregale, Kleiderschränke und TV-Möbel; wir wählen das Material gemeinsam aus und fertigen nach Wochenkalender. Demo-Website; die Inhalte sind fiktiv.",
+    "ru": "Ilgın Atölye: столы, книжные шкафы, гардеробы и ТВ-тумбы на заказ по вашим размерам; материал выбираем вместе, изготавливаем по недельному графику. Демо-сайт; содержание вымышленное."
   },
   "keyword": {
     "tr": "ısmarlama mobilya, ölçüye özel, masif meşe, kitaplık, gardırop, Gaziantep",
     "en": "bespoke furniture, made to measure, solid oak, bookcase, wardrobe, Gaziantep",
-    "ar": "أثاث حسب الطلب، حسب المقاس، بلوط صلب، مكتبة، خزانة ملابس، غازي عنتاب"
+    "ar": "أثاث حسب الطلب، حسب المقاس، بلوط صلب، مكتبة، خزانة ملابس، غازي عنتاب",
+    "de": "Maßmöbel, nach Maß gefertigt, massive Eiche, Bücherregal, Kleiderschrank, Gaziantep",
+    "ru": "мебель на заказ, по индивидуальным размерам, массив дуба, книжный шкаф, гардероб, Газиантеп"
   },
   "category": "Kurumsal",
   "name": "Ilgın Atölye",
@@ -18,15 +22,27 @@
     "tr": true,
     "en": true,
     "ar": true,
-    "de": false,
-    "ru": false,
+    "de": true,
+    "ru": true,
     "es": false,
     "fr": false,
     "it": false,
     "ja": false,
     "zh": false,
     "ko": false,
-    "pt": false
+    "pt": false,
+    "fa": false,
+    "he": false,
+    "ur": false,
+    "nl": false,
+    "pl": false,
+    "uk": false,
+    "az": false,
+    "ka": false,
+    "el": false,
+    "bg": false,
+    "ro": false,
+    "hi": false
   },
   "logo": "logo.png",
   "multi": false,

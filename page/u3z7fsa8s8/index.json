@@ -3,17 +3,23 @@
   "name": {
     "tr": "Brief",
     "en": "Brief",
-    "ar": "الطلب"
+    "ar": "الطلب",
+    "de": "Brief",
+    "ru": "Бриф"
   },
   "description": {
     "tr": "Ismarlama parça için brief (demo).",
     "en": "Brief for a bespoke piece (demo).",
-    "ar": "طلب قطعة حسب الطلب (تجريبي)."
+    "ar": "طلب قطعة حسب الطلب (تجريبي).",
+    "de": "Briefing für Sonderanfertigung (Demo).",
+    "ru": "Бриф на изготовление детали по заказу (демо)."
   },
   "keyword": {
     "tr": "ısmarlama, brief",
     "en": "bespoke, brief",
-    "ar": "حسب الطلب"
+    "ar": "حسب الطلب",
+    "de": "Maßanfertigung, Briefing",
+    "ru": "изготовление на заказ, бриф"
   },
   "path": "teklif-al",
   "icon": "edit_note",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Brief",
     "en": "Brief",
-    "ar": "الطلب"
+    "ar": "الطلب",
+    "de": "Brief",
+    "ru": "Бриф"
   },
   "date": "2026-11-16T16:07:23.672Z",
   "update": "2026-11-16T16:19:50.948Z"

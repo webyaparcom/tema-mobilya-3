@@ -5,12 +5,16 @@
       "name": {
         "tr": "Malzeme",
         "en": "Materials",
-        "ar": "الخامات"
+        "ar": "الخامات",
+        "de": "Materialien",
+        "ru": "Материалы"
       },
       "description": {
         "tr": "Masif meşe, ceviz kaplama ve mat lake karşılaştırması.",
         "en": "Solid oak, walnut veneer and matt lacquer compared.",
-        "ar": "مقارنة بين البلوط الصلب وقشرة الجوز واللاكيه المطفأ."
+        "ar": "مقارنة بين البلوط الصلب وقشرة الجوز واللاكيه المطفأ.",
+        "de": "Vergleich von Massiv-Eiche, Nussbaum-Furnier und Mattlack.",
+        "ru": "Сравнение массива дуба, шпона ореха и матового лака."
       },
       "path": "hizmetler",
       "icon": "forest",
@@ -30,7 +34,9 @@
       "name": {
         "tr": "Atölye",
         "en": "Atelier",
-        "ar": "الأتيليه"
+        "ar": "الأتيليه",
+        "de": "Workshop",
+        "ru": "Воркшоп"
       },
       "status": "play",
       "id": "hakkimizda",
@@ -51,7 +57,9 @@
       "description": {
         "tr": "Ölçüye ısmarlama mobilya yapan kurgusal atölye.",
         "en": "A fictional atelier making bespoke furniture to measure.",
-        "ar": "أتيليه افتراضي يصنع أثاثًا حسب المقاس والطلب."
+        "ar": "أتيليه افتراضي يصنع أثاثًا حسب المقاس والطلب.",
+        "de": "Eine fiktive Werkstatt, die Möbel nach Maß fertigt.",
+        "ru": "Вымышленная мастерская, изготавливающая мебель на заказ по размерам."
       }
     },
     {
@@ -59,12 +67,16 @@
       "name": {
         "tr": "Rehber",
         "en": "Guide",
-        "ar": "الدليل"
+        "ar": "الدليل",
+        "de": "Verzeichnis",
+        "ru": "Справочник"
       },
       "description": {
         "tr": "Ölçü, malzeme ve bütçe kararları için adım adım rehber.",
         "en": "A step-by-step guide to size, material and budget decisions.",
-        "ar": "دليل خطوة بخطوة لقرارات المقاس والخامة والميزانية."
+        "ar": "دليل خطوة بخطوة لقرارات المقاس والخامة والميزانية.",
+        "de": "Schritt-für-Schritt-Ratgeber für Entscheidungen zu Maßen, Material und Budget.",
+        "ru": "Пошаговое руководство по выбору размеров, материалов и бюджета."
       },
       "path": "sorular",
       "icon": "help",
@@ -85,12 +97,16 @@
       "name": {
         "tr": "Brief",
         "en": "Brief",
-        "ar": "الطلب"
+        "ar": "الطلب",
+        "de": "Brief",
+        "ru": "Бриф"
       },
       "description": {
         "tr": "Ismarlama parça için brief (demo).",
         "en": "Brief for a bespoke piece (demo).",
-        "ar": "طلب قطعة حسب الطلب (تجريبي)."
+        "ar": "طلب قطعة حسب الطلب (تجريبي).",
+        "de": "Briefing für Sonderanfertigung (Demo).",
+        "ru": "Бриф на изготовление детали по заказу (демо)."
       },
       "path": "teklif-al",
       "icon": "edit_note",
@@ -110,7 +126,9 @@
       "name": {
         "tr": "İletişim",
         "en": "Contact",
-        "ar": "اتصل بنا"
+        "ar": "اتصل بنا",
+        "de": "Kontakt",
+        "ru": "Контакты"
       },
       "status": "play",
       "id": "iletisim",
@@ -131,7 +149,9 @@
       "description": {
         "tr": "Adres, telefon ve çalışma saatleri.",
         "en": "Address, phone and opening hours.",
-        "ar": "العنوان والهاتف وساعات العمل."
+        "ar": "العنوان والهاتف وساعات العمل.",
+        "de": "Adresse, Telefon und Öffnungszeiten.",
+        "ru": "Адрес, телефон и часы работы."
       }
     }
   ],

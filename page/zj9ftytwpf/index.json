@@ -3,17 +3,23 @@
   "name": {
     "tr": "Rehber",
     "en": "Guide",
-    "ar": "الدليل"
+    "ar": "الدليل",
+    "de": "Verzeichnis",
+    "ru": "Справочник"
   },
   "description": {
     "tr": "Ölçü, malzeme ve bütçe kararları için adım adım rehber.",
     "en": "A step-by-step guide to size, material and budget decisions.",
-    "ar": "دليل خطوة بخطوة لقرارات المقاس والخامة والميزانية."
+    "ar": "دليل خطوة بخطوة لقرارات المقاس والخامة والميزانية.",
+    "de": "Schritt-für-Schritt-Ratgeber für Entscheidungen zu Maßen, Material und Budget.",
+    "ru": "Пошаговое руководство по выбору размеров, материалов и бюджета."
   },
   "keyword": {
     "tr": "sss, soru cevap",
     "en": "faq, questions",
-    "ar": "أسئلة وأجوبة"
+    "ar": "أسئلة وأجوبة",
+    "de": "FAQ, Fragen und Antworten",
+    "ru": "FAQ, вопросы и ответы"
   },
   "path": "sorular",
   "icon": "help",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Rehber",
     "en": "Guide",
-    "ar": "الدليل"
+    "ar": "الدليل",
+    "de": "Verzeichnis",
+    "ru": "Справочник"
   },
   "date": "2026-11-16T16:07:23.667Z",
   "update": "2026-11-16T16:19:50.945Z"

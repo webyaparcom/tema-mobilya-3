@@ -2,7 +2,9 @@
   "name": {
     "tr": "Atölye",
     "en": "Atelier",
-    "ar": "الأتيليه"
+    "ar": "الأتيليه",
+    "de": "Workshop",
+    "ru": "Воркшоп"
   },
   "status": "play",
   "category": "",
@@ -23,7 +25,9 @@
   "description": {
     "tr": "Ölçüye ısmarlama mobilya yapan kurgusal atölye.",
     "en": "A fictional atelier making bespoke furniture to measure.",
-    "ar": "أتيليه افتراضي يصنع أثاثًا حسب المقاس والطلب."
+    "ar": "أتيليه افتراضي يصنع أثاثًا حسب المقاس والطلب.",
+    "de": "Eine fiktive Werkstatt, die Möbel nach Maß fertigt.",
+    "ru": "Вымышленная мастерская, изготавливающая мебель на заказ по размерам."
   },
   "spot": {
     "tr": "",
@@ -34,12 +38,16 @@
   "title": {
     "tr": "Atölye",
     "en": "Atelier",
-    "ar": "الأتيليه"
+    "ar": "الأتيليه",
+    "de": "Workshop",
+    "ru": "Воркшоп"
   },
   "keyword": {
     "tr": "hakkımızda",
     "en": "about",
-    "ar": "من نحن"
+    "ar": "من نحن",
+    "de": "Über uns",
+    "ru": "О нас"
   },
   "text": {},
   "update": "2026-11-16T16:19:50.941Z",
